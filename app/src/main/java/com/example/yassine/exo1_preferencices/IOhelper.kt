@@ -19,7 +19,7 @@ class IOhelper {
 
         fun writeToFile(context: Context, fileName: String, str: String) {
             try {
-                val fos = context.openFileOutput(fileName, Context.MODE_PRIVATE)
+                val fos = context.openFileOutput(fileName, Context.MODE_APPEND)
                 fos.write(str.toByteArray(), 0, str.length)
                 Log.d("oui","kteb")
                 fos.close()

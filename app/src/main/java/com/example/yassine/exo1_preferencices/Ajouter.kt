@@ -11,11 +11,13 @@ import android.content.res.AssetManager
 import android.util.Log
 import java.io.*
 import android.util.JsonWriter
-
-
+import android.widget.EditText
 
 
 class Ajouter : AppCompatActivity() {
+
+    private var fileName:String = "interventions.json"
+
     private val items: List<String>? = arrayListOf("A", "B", "C")
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,16 +32,26 @@ class Ajouter : AppCompatActivity() {
     }
 
     fun writeJson(view: View) {
-        IOhelper.writeToFile(this, "interventions.txt", this.toJsonString())
+        var numeroET:EditText = findViewById(R.id.num)
+        var nomPET:EditText = findViewById(R.id.nomP)
+        var typeSpiner:Spinner = findViewById(R.id.multi_spinner)
+
+
+        var numero = numeroET.text.toString()
+        var nomP = nomPET.text.toString()
+        var typeIntervention = typeSpiner.get
+
+
+        IOhelper.writeToFile(this, this.fileName, this.toJsonString(numero,nomP))
 
     }
 
-    fun toJsonString(): String {
+    fun toJsonString(numero:String,nomP:String): String {
 
-        return "{ \"numero\": \"ES\",\n" +
-                "    \"date\": \"Valencia\",\n" +
-                "    \"nomPlombier\": \"yassine\",\n" +
-                "    \"typeIntervention\":\"D\"}"
+        return "{ \"numero\": "+ numero +",\n" +
+                "    \"date\": \"05/06/1995\",\n" +
+                "    \"nomPlombier\": "+ nomP +",\n" +
+                "    \"typeIntervention\":\"D\"}"+"\n"
     }
 
 
