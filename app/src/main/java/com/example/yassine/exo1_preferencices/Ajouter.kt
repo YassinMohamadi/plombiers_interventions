@@ -11,6 +11,7 @@ import android.content.res.AssetManager
 import android.util.Log
 import java.io.*
 import android.util.JsonWriter
+import android.widget.DatePicker
 import android.widget.EditText
 
 
@@ -35,23 +36,26 @@ class Ajouter : AppCompatActivity() {
         var numeroET:EditText = findViewById(R.id.num)
         var nomPET:EditText = findViewById(R.id.nomP)
         var typeSpiner:Spinner = findViewById(R.id.multi_spinner)
+        var dp:DatePicker = findViewById(R.id.datePicker2)
 
 
         var numero = numeroET.text.toString()
         var nomP = nomPET.text.toString()
-        var typeIntervention = typeSpiner.get
+        var typeIntervention = typeSpiner.selectedItem.toString()
+        var date = "j" +dp.dayOfMonth.toString() + "m" + (dp.month+1).toString() + "a" + dp.year.toString()
 
 
-        IOhelper.writeToFile(this, this.fileName, this.toJsonString(numero,nomP))
+
+        IOhelper.writeToFile(this, this.fileName, this.toJsonString(numero,nomP,date,typeIntervention))
 
     }
 
-    fun toJsonString(numero:String,nomP:String): String {
+    fun toJsonString(numero:String,nomP:String, date:String, typeIntervention:String): String {
 
         return "{ \"numero\": "+ numero +",\n" +
-                "    \"date\": \"05/06/1995\",\n" +
+                "    \"date\": "+ date +",\n" +
                 "    \"nomPlombier\": "+ nomP +",\n" +
-                "    \"typeIntervention\":\"D\"}"+"\n"
+                "    \"typeIntervention\":"+ typeIntervention + "}"+"\n"
     }
 
 

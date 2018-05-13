@@ -11,6 +11,8 @@ import android.widget.TextView
 import co.zsmb.materialdrawerkt.builders.drawer
 import co.zsmb.materialdrawerkt.draweritems.badgeable.primaryItem
 import co.zsmb.materialdrawerkt.draweritems.sectionHeader
+import com.mikepenz.google_material_typeface_library.GoogleMaterial
+import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic
 import com.mikepenz.materialdrawer.Drawer
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.reflect.KClass
@@ -63,16 +65,20 @@ class MainActivity : AppCompatActivity() {
             }
 
             primaryItem("Ajouter") {
-                //iicon = GoogleMaterial.Icon.gmd_movie
+                iicon = GoogleMaterial.Icon.gmd_filter_9_plus
                 onClick(openActivity(Ajouter::class, "1"))
             }
             primaryItem("Modifier") {
-                //iicon = MaterialDesignIconic.Icon.gmi_live_tv
+                iicon = MaterialDesignIconic.Icon.gmi_bluetooth_setting
                 //onClick(openActivity(MesFilms::class,"2"))
             }
             primaryItem("Supprimer") {
-                //iicon = GoogleMaterial.Icon.gmd_room
-                //onClick(openActivity(HeaderFooterActivity::class))
+                iicon = GoogleMaterial.Icon.gmd_delete
+                onClick(openActivity(Delete::class, "5"))
+            }
+            primaryItem("Rechercher intervention") {
+                iicon = GoogleMaterial.Icon.gmd_search
+                onClick(openActivity(Rechercher::class, "5"))
             }
 
 
@@ -97,7 +103,7 @@ class MainActivity : AppCompatActivity() {
                     if(i==4){
                         ret = stringBuilder.toString()
                         stringBuilder.setLength(0)
-                        val js:JSONObject = JSONObject(ret)
+                        val js = JSONObject(ret)
                         arrayJS.add(js)
                         i=0
 
