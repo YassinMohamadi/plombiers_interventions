@@ -65,12 +65,12 @@ class MainActivity : AppCompatActivity() {
             }
 
             primaryItem("Ajouter") {
-                iicon = GoogleMaterial.Icon.gmd_filter_9_plus
+                iicon = GoogleMaterial.Icon.gmd_add
                 onClick(openActivity(Ajouter::class, "1"))
             }
             primaryItem("Modifier") {
-                iicon = MaterialDesignIconic.Icon.gmi_bluetooth_setting
-                //onClick(openActivity(MesFilms::class,"2"))
+                iicon = GoogleMaterial.Icon.gmd_settings
+                onClick(openActivity(Modifier::class,"2"))
             }
             primaryItem("Supprimer") {
                 iicon = GoogleMaterial.Icon.gmd_delete
